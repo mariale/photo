@@ -1,0 +1,22 @@
+RewriteOptions inherit
+RewriteEngine On
+RewriteCond %{SERVER_PORT} 80
+RewriteRule ^(.*)$ https://photopassexcursions.com//$1 [R,L]
+
+RewriteCond %{HTTP_REFERER} !^http://photopassexcursions.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://photopassexcursions.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.photopassexcursions.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^http://www.photopassexcursions.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://photopassexcursions.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://photopassexcursions.com$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.photopassexcursions.com/.*$      [NC]
+RewriteCond %{HTTP_REFERER} !^https://www.photopassexcursions.com$      [NC]
+	
+DirectoryIndex login.php
+ErrorDocument 404 /404.html
+
+RewriteEngine On	
+RewriteCond %{HTTPS} !on
+RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI}
+
+
